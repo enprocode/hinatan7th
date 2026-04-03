@@ -4,221 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>7回目のひな誕祭 当日ガイド</title>
-  <style>
-    :root {
-      --sky-d: #1A6FA3;
-      --sky:   #4AACE8;
-      --sky-l: #E8F5FC;
-      --text:  #111;
-      --sub:   #666;
-      --line:  #E8EFF5;
-      --bg:    #F4F8FC;
-      --r: 12px;
-
-      /* スポット配色 */
-      --c-stadium:   #E53935;
-      --c-redbrick:  #1E88E5;
-      --c-central:   #43A047;
-      --c-tower:     #8E24AA;
-      --c-unicoffee: #FB8C00;
-      --c-chinatown: #E53935;
-      --c-minatomi:  #00ACC1;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;
-      background: var(--bg); color: var(--text);
-      font-size: 14px; line-height: 1.6;
-      -webkit-text-size-adjust: 100%;
-    }
-    a { color: inherit; text-decoration: none; }
-
-    /* ── HEADER ── */
-    header {
-      background: var(--sky-d); color: #fff;
-      padding: 16px 16px 14px;
-    }
-    header p   { font-size: 11px; opacity: .7; letter-spacing: .1em; }
-    header h1  { font-size: 19px; font-weight: 900; line-height: 1.2; margin: 3px 0; }
-    header small { font-size: 11px; opacity: .8; }
-    .tags { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; }
-    .tag  {
-      background: rgba(255,255,255,.15);
-      border: 1px solid rgba(255,255,255,.28);
-      border-radius: 20px; padding: 3px 10px;
-      font-size: 11px; font-weight: 600;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 99;
-      background: #fff; border-bottom: 1px solid var(--line);
-      overflow-x: auto; white-space: nowrap; scrollbar-width: none;
-    }
-    nav::-webkit-scrollbar { display: none; }
-    nav ul { display: inline-flex; list-style: none; padding: 0 8px; }
-    nav a {
-      display: block; padding: 10px 13px;
-      color: var(--sub); font-size: 12px; font-weight: 600;
-    }
-    nav a:hover { color: var(--sky-d); }
-
-    /* ── WRAP ── */
-    .w { max-width: 640px; margin: 0 auto; padding: 0 14px; }
-    @supports(padding: max(0px)){
-      .w{ padding-left: max(14px,env(safe-area-inset-left)); padding-right: max(14px,env(safe-area-inset-right)); }
-    }
-
-    /* ── SECTION TITLE ── */
-    .sec { padding: 20px 0 4px; scroll-margin-top: 42px; }
-    h2 {
-      font-size: 14px; font-weight: 800; color: var(--sky-d);
-      margin-bottom: 10px;
-      display: flex; align-items: center; gap: 6px;
-    }
-
-    /* ══════════════════════════════════
-       MAP + COLLAB INTEGRATED SECTION
-    ══════════════════════════════════ */
-
-    /* 地図 */
-    .map-frame {
-      border-radius: var(--r); overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,.09);
-      margin-bottom: 0;
-      position: relative;
-    }
-    .map-frame iframe { width: 100%; height: 320px; border: 0; display: block; }
-
-    /* 凡例バー（地図直下） */
-    .legend-bar {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-top: none;
-      border-radius: 0 0 var(--r) var(--r);
-      padding: 8px 12px;
-      display: flex; flex-wrap: wrap; gap: 6px;
-      margin-bottom: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.05);
-    }
-    .leg {
-      display: flex; align-items: center; gap: 4px;
-      font-size: 11px; font-weight: 600; color: var(--text);
-      cursor: pointer; padding: 2px 4px; border-radius: 4px;
-      transition: background .12s;
-    }
-    .leg:hover { background: var(--sky-l); }
-    .ldot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-
-    /* スポットカード（地図と連動） */
-    .spot-cards { display: flex; flex-direction: column; gap: 10px; }
-
-    .spot-card {
-      background: #fff;
-      border-radius: var(--r);
-      box-shadow: 0 1px 6px rgba(0,0,0,.07);
-      overflow: hidden;
-      display: grid;
-      /* 左：カラーバー、右：コンテンツ */
-      grid-template-columns: 5px 1fr;
-      transition: box-shadow .15s, transform .15s;
-    }
-    .spot-card:hover { box-shadow: 0 3px 14px rgba(0,0,0,.12); transform: translateY(-1px); }
-
-    /* カラーバー */
-    .spot-bar { border-radius: var(--r) 0 0 var(--r); }
-
-    /* カード内レイアウト */
-    .spot-inner { padding: 12px 13px 12px 11px; }
-
-    /* ヘッダー行 */
-    .spot-hd {
-      display: flex; align-items: flex-start;
-      justify-content: space-between; gap: 8px;
-      margin-bottom: 7px;
-    }
-    .spot-hd-left { display: flex; align-items: flex-start; gap: 8px; }
-    .spot-emoji { font-size: 20px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
-    .spot-title { font-weight: 800; font-size: 14px; line-height: 1.3; }
-    .spot-sub   { font-size: 11px; color: var(--sub); margin-top: 1px; }
-
-    /* 地図リンクボタン */
-    .map-btn {
-      display: inline-flex; align-items: center; gap: 3px;
-      background: var(--sky-l); color: var(--sky-d);
-      border-radius: 20px; padding: 4px 9px;
-      font-size: 11px; font-weight: 700; white-space: nowrap;
-      flex-shrink: 0; text-decoration: none;
-      transition: background .12s;
-    }
-    .map-btn:hover { background: #c8e8f8; }
-
-    /* コンテンツ本文 */
-    .spot-body { font-size: 13px; }
-    .spot-body p { margin-bottom: 4px; color: var(--text); }
-    .spot-body strong { color: var(--sky-d); }
-
-    /* 日程フッター */
-    .spot-foot {
-      margin-top: 8px; padding-top: 6px;
-      border-top: 1px solid var(--line);
-      font-size: 11px; font-weight: 700; color: var(--sub);
-      display: flex; align-items: center; gap: 4px;
-    }
-    .spot-foot .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-
-    /* チップ */
-    .chip {
-      display: inline-block;
-      background: var(--sky-l); color: var(--sky-d);
-      border-radius: 8px; padding: 1px 7px;
-      font-size: 11px; font-weight: 700; margin: 1px 1px 1px 0;
-    }
-    .chip-green { background: #D1FAE5; color: #065F46; }
-
-    /* 区切り */
-    hr { border: none; border-top: 1px solid var(--line); margin: 6px 0; }
-
-    /* ── SCHEDULE ── */
-    .day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .day-card { background: #fff; border-radius: var(--r); overflow: hidden; box-shadow: 0 1px 6px rgba(0,0,0,.06); }
-    .day-head { background: var(--sky-d); color: #fff; padding: 8px 12px; font-weight: 800; font-size: 13px; }
-    .day-body { padding: 10px 12px; }
-    .row { display: flex; align-items: center; gap: 6px; padding: 4px 0; font-size: 13px; border-bottom: 1px solid var(--line); }
-    .row:last-child { border-bottom: none; }
-    .lbl { background: var(--sky-l); color: var(--sky-d); font-weight: 700; font-size: 10px; padding: 2px 6px; border-radius: 4px; min-width: 36px; text-align: center; flex-shrink: 0; }
-
-    /* ── TABLE ── */
-    table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    th { background: var(--sky-d); color: #fff; padding: 7px 11px; text-align: left; font-weight: 700; font-size: 12px; }
-    td { padding: 7px 11px; border-bottom: 1px solid var(--line); }
-    tr:last-child td { border-bottom: none; }
-    tr:nth-child(even) td { background: var(--sky-l); }
-
-    /* ── CARD（汎用） ── */
-    .card { background: #fff; border-radius: var(--r); box-shadow: 0 1px 6px rgba(0,0,0,.06); overflow: hidden; margin-bottom: 8px; }
-
-    /* ── LINKS ── */
-    .lk-list { list-style: none; }
-    .lk-list li { border-bottom: 1px solid var(--line); }
-    .lk-list li:last-child { border-bottom: none; }
-    .lk-list a { display: block; padding: 9px 4px; color: var(--sky-d); font-size: 13px; }
-    .lk-list a:hover { text-decoration: underline; }
-
-    /* ── ACCESS ── */
-    .ac-row { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
-    .ac-row:last-child { border-bottom: none; }
-
-    .map-box { border-radius: var(--r); overflow: hidden; box-shadow: 0 1px 8px rgba(0,0,0,.08); margin-bottom: 8px; }
-    .map-box iframe { width: 100%; height: 260px; border: 0; display: block; }
-
-    /* ── NOTE / FOOTER ── */
-    .note { font-size: 11px; color: var(--sub); margin-top: 5px; }
-    footer { background: var(--sky-d); color: rgba(255,255,255,.7); text-align: center; padding: 16px; font-size: 11px; margin-top: 28px; }
-    footer a { color: rgba(255,255,255,.85); }
-  </style>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
+
+<a class="skip-link" href="#main">スキップして本文へ</a>
 
 <!-- ── HEADER ── -->
 <header>
@@ -233,63 +24,68 @@
 </header>
 
 <!-- ── NAV ── -->
-<nav>
+<nav aria-label="ページ内ナビゲーション">
   <ul>
-    <li><a href="#spots">🗺 スポット</a></li>
-    <li><a href="#schedule">📅 日程</a></li>
-    <li><a href="#goods">🛒 グッズ</a></li>
-    <li><a href="#access">🚉 アクセス</a></li>
-    <li><a href="#links">🔗 リンク</a></li>
+    <li><a class="nav-link" href="#spots">🗺 スポット・アクセス</a></li>
+    <li><a class="nav-link" href="#schedule">📅 日程</a></li>
+    <li><a class="nav-link" href="#goods">🛒 グッズ</a></li>
+    <li><a class="nav-link" href="#links">🔗 リンク</a></li>
   </ul>
 </nav>
 
-<div class="w">
+<main id="main" class="w">
 
   <!-- ══════════════════════════════════════
        MAP + COLLAB INTEGRATED
   ══════════════════════════════════════ -->
   <section class="sec" id="spots">
-    <h2>🗺 スポットガイド</h2>
+    <h2>🗺 スポット・アクセス</h2>
+
+    <div class="spot-filterbar" role="search" aria-label="スポットを検索・絞り込み">
+      <div class="spot-filter-row">
+        <div class="spot-search">
+          <label class="sr-only" for="spotSearch">スポットを検索</label>
+          <input
+            id="spotSearch"
+            type="search"
+            placeholder="例：赤レンガ、コーヒー、展示"
+            autocomplete="off"
+          >
+        </div>
+        <button id="spotClear" type="button" class="btn-small">クリア</button>
+      </div>
+
+      <div class="spot-filter-row" aria-label="タグで絞り込み">
+        <button type="button" class="tag-filter" data-spot-tag="会場" aria-pressed="false">会場</button>
+        <button type="button" class="tag-filter" data-spot-tag="グッズ" aria-pressed="false">グッズ</button>
+        <button type="button" class="tag-filter" data-spot-tag="飲食" aria-pressed="false">飲食</button>
+        <button type="button" class="tag-filter" data-spot-tag="展示" aria-pressed="false">展示</button>
+        <button type="button" class="tag-filter" data-spot-tag="交通" aria-pressed="false">交通</button>
+        <button type="button" class="tag-filter" data-spot-tag="無料" aria-pressed="false">無料</button>
+      </div>
+
+      <div class="spot-results" aria-live="polite">
+        <span id="spotResultsCount">0件</span>表示
+        <span id="spotNoResults" hidden>対象がありません</span>
+      </div>
+    </div>
 
     <!-- 地図 -->
-    <div class="map-frame">
+    <div class="map-frame map-frame--crop" aria-label="横浜エリアマップ">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6500.8!2d139.6430!3d35.4480!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185427e50f1041%3A0x9c48e36e0e2d1337!2z5qiq5rWc44K544K_44K444Kr44CI44Ki44Og!5e0!3m2!1sja!2sjp!4v1"
-        allowfullscreen loading="lazy"
+        id="yokohama-map"
+        title="横浜エリアマップ（ピン付き）"
+        loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        title="横浜エリアマップ">
-      </iframe>
-    </div>
-    <!-- 凡例（地図直下） -->
-    <div class="legend-bar">
-      <a class="leg" href="https://maps.google.com/?q=横浜スタジアム" target="_blank" rel="noopener">
-        <div class="ldot" style="background:var(--c-stadium);"></div>横浜スタジアム
-      </a>
-      <a class="leg" href="https://maps.google.com/?q=横浜赤レンガ倉庫" target="_blank" rel="noopener">
-        <div class="ldot" style="background:var(--c-redbrick);"></div>赤レンガ倉庫
-      </a>
-      <a class="leg" href="https://maps.google.com/?q=臨港パーク+横浜" target="_blank" rel="noopener">
-        <div class="ldot" style="background:var(--c-central);"></div>臨港パーク
-      </a>
-      <a class="leg" href="https://maps.google.com/?q=横浜マリンタワー" target="_blank" rel="noopener">
-        <div class="ldot" style="background:var(--c-tower);"></div>マリンタワー
-      </a>
-      <a class="leg" href="https://maps.google.com/?q=UNI+COFFEE+ROASTERY+横浜" target="_blank" rel="noopener">
-        <div class="ldot" style="background:var(--c-unicoffee);"></div>UNI COFFEE
-      </a>
-      <a class="leg" href="https://maps.google.com/?q=横浜中華街" target="_blank" rel="noopener">
-        <div class="ldot" style="background:var(--c-chinatown);"></div>中華街
-      </a>
-      <a class="leg" href="https://maps.google.com/?q=日本大通り駅" target="_blank" rel="noopener">
-        <div class="ldot" style="background:var(--c-minatomi);"></div>日本大通り駅
-      </a>
+        src="https://www.google.com/maps/d/embed?mid=19dE9UWyX50jd9NySJXjD5lwad0S62lk&amp;z=14&amp;ll=35.4453%2C139.6381"
+      ></iframe>
     </div>
 
     <!-- スポットカード -->
     <div class="spot-cards">
 
-      <!-- ① 横浜スタジアム -->
-      <div class="spot-card">
+      <!-- ① 横浜スタジアム（会場＋行き方） -->
+      <div class="spot-card" id="access" data-spot-id="stadium" data-lat="35.4394" data-lng="139.6374" data-tags="会場,グッズ,飲食">
         <div class="spot-bar" style="background:var(--c-stadium);"></div>
         <div class="spot-inner">
           <div class="spot-hd">
@@ -308,6 +104,13 @@
             <p>　• POWER SEND ユニフォーム × 日向坂46デザイン</p>
             <p>　• 各期別曲モチーフ限定飲食4種 ＋「ポカカラ」（ポカ初監修）</p>
             <p>　• コラボF&D購入で限定コースター（全5種ランダム）プレゼント</p>
+            <hr>
+            <p class="spot-inline-h">🚉 会場までの行き方</p>
+            <ul class="spot-route">
+              <li><strong>みなとみらい線</strong>「日本大通り」3番出口 ／ 徒歩約5分</li>
+              <li><strong>JR根岸線・横浜線</strong>「関内」北口 ／ 徒歩約3分</li>
+              <li><strong>市営地下鉄ブルーライン</strong>「関内」駅 ／ 徒歩約5分</li>
+            </ul>
           </div>
           <div class="spot-foot">
             <div class="dot" style="background:var(--c-stadium);"></div>
@@ -317,7 +120,7 @@
       </div>
 
       <!-- ② 横浜赤レンガ倉庫 -->
-      <div class="spot-card">
+      <div class="spot-card" data-spot-id="redbrick" data-lat="35.4526321" data-lng="139.6428944" data-tags="グッズ,飲食">
         <div class="spot-bar" style="background:var(--c-redbrick);"></div>
         <div class="spot-inner">
           <div class="spot-hd">
@@ -349,7 +152,7 @@
       </div>
 
       <!-- ③ 臨港パーク（CENTRAL） -->
-      <div class="spot-card">
+      <div class="spot-card" data-spot-id="central" data-lat="35.461028" data-lng="139.637389" data-tags="展示,無料">
         <div class="spot-bar" style="background:var(--c-central);"></div>
         <div class="spot-inner">
           <div class="spot-hd">
@@ -377,7 +180,7 @@
       </div>
 
       <!-- ④ 横浜マリンタワー -->
-      <div class="spot-card">
+      <div class="spot-card" data-spot-id="marinetower" data-lat="35.443939" data-lng="139.650940" data-tags="展示">
         <div class="spot-bar" style="background:var(--c-tower);"></div>
         <div class="spot-inner">
           <div class="spot-hd">
@@ -403,7 +206,7 @@
       </div>
 
       <!-- ⑤ UNI COFFEE（関内・日本大通り） -->
-      <div class="spot-card">
+      <div class="spot-card" data-spot-id="unicoffee" data-lat="35.4468455" data-lng="139.6408256" data-tags="飲食">
         <div class="spot-bar" style="background:var(--c-unicoffee);"></div>
         <div class="spot-inner">
           <div class="spot-hd">
@@ -433,7 +236,7 @@
       </div>
 
       <!-- ⑥ 横浜中華街 -->
-      <div class="spot-card">
+      <div class="spot-card" data-spot-id="chinatown" data-lat="35.442815" data-lng="139.645929" data-tags="飲食">
         <div class="spot-bar" style="background:var(--c-chinatown);"></div>
         <div class="spot-inner">
           <div class="spot-hd">
@@ -459,7 +262,7 @@
       </div>
 
       <!-- ⑦ 日本大通り駅・交通コラボ -->
-      <div class="spot-card">
+      <div class="spot-card" data-spot-id="nihonodori" data-lat="35.446794" data-lng="139.642647" data-tags="交通">
         <div class="spot-bar" style="background:var(--c-minatomi);"></div>
         <div class="spot-inner">
           <div class="spot-hd">
@@ -490,21 +293,22 @@
   <!-- ── SCHEDULE ── -->
   <section class="sec" id="schedule">
     <h2>📅 公演スケジュール</h2>
-    <div class="day-grid">
-      <div class="day-card">
-        <div class="day-head">Day 1｜4/4 (土)</div>
+    <div class="schedule-list">
+      <details class="day-accordion" open>
+        <summary>Day 1｜4/4 (土)</summary>
         <div class="day-body">
           <div class="row"><span class="lbl">開場</span>15:00</div>
           <div class="row"><span class="lbl">開演</span>17:00</div>
         </div>
-      </div>
-      <div class="day-card">
-        <div class="day-head">Day 2｜4/5 (日)</div>
+      </details>
+
+      <details class="day-accordion">
+        <summary>Day 2｜4/5 (日)</summary>
         <div class="day-body">
           <div class="row"><span class="lbl">開場</span>15:00</div>
           <div class="row"><span class="lbl">開演</span>17:00</div>
         </div>
-      </div>
+      </details>
     </div>
     <div class="card" style="padding: 10px 13px; margin-top: 2px;">
       <span style="font-size:12px; font-weight:700; color:var(--sky-d);">📺 配信</span>
@@ -515,45 +319,33 @@
   <!-- ── GOODS ── -->
   <section class="sec" id="goods">
     <h2>🛒 グッズ販売</h2>
-    <div class="card">
-      <table>
-        <thead><tr><th>日程</th><th>場所</th><th>時間</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><span class="chip">前日</span> 4/3(金)</td>
-            <td>赤レンガ倉庫 広場</td>
-            <td>15:00〜20:00</td>
-          </tr>
-          <tr>
-            <td><span class="chip">当日</span> 4/4・4/5</td>
-            <td>赤レンガ倉庫 広場</td>
-            <td>10:00〜17:00</td>
-          </tr>
-          <tr>
-            <td><span class="chip">当日</span> 4/4・4/5</td>
-            <td>横浜スタジアム内</td>
-            <td>13:00〜終演後30分</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+    <div class="goods-list" aria-label="グッズ販売日程">
+      <div class="goods-item">
+        <div class="goods-meta">
+          <span class="chip">前日</span>
+          <span style="font-weight:900;">4/3(金)</span>
+        </div>
+        <div class="goods-place">赤レンガ倉庫 広場</div>
+        <div class="goods-time">15:00〜20:00</div>
+      </div>
 
-  <!-- ── ACCESS ── -->
-  <section class="sec" id="access">
-    <h2>🚉 横浜スタジアム アクセス</h2>
-    <div class="card" style="padding: 2px 13px 8px;">
-      <div class="ac-row"><span>🚃</span><div><strong>みなとみらい線</strong>「日本大通り」3番出口 ／ 徒歩約5分</div></div>
-      <div class="ac-row"><span>🚃</span><div><strong>JR根岸線・横浜線</strong>「関内」北口 ／ 徒歩約3分</div></div>
-      <div class="ac-row"><span>🚃</span><div><strong>市営地下鉄ブルーライン</strong>「関内」駅 ／ 徒歩約5分</div></div>
-    </div>
-    <div class="map-box">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3252.2!2d139.6393!3d35.4437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185427e50f1041%3A0x9c48e36e0e2d1337!2z5qiq5rWc44K544K_44K444Kr44CI44Ki44Og!5e0!3m2!1sja!2sjp!4v2"
-        allowfullscreen loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="横浜スタジアム アクセスマップ">
-      </iframe>
+      <div class="goods-item">
+        <div class="goods-meta">
+          <span class="chip">当日</span>
+          <span style="font-weight:900;">4/4・4/5</span>
+        </div>
+        <div class="goods-place">赤レンガ倉庫 広場</div>
+        <div class="goods-time">10:00〜17:00</div>
+      </div>
+
+      <div class="goods-item">
+        <div class="goods-meta">
+          <span class="chip">当日</span>
+          <span style="font-weight:900;">4/4・4/5</span>
+        </div>
+        <div class="goods-place">横浜スタジアム内</div>
+        <div class="goods-time">13:00〜終演後30分</div>
+      </div>
     </div>
   </section>
 
@@ -576,7 +368,7 @@
     ※ 情報は各公式発表をもとに作成。最新情報は<a href="https://www.hinatazaka46.com" style="color:var(--sky-d);">日向坂46公式サイト</a>でご確認ください。価格はすべて税込。
   </p>
 
-</div><!-- /w -->
+</main><!-- /w -->
 
 <footer>
   <p>7回目のひな誕祭 〜Welcome to HINATAZAKA ROCKESTRA〜 当日ガイド</p>
