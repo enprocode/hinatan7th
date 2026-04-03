@@ -71,46 +71,21 @@
     </div>
 
     <!-- 地図 -->
-    <div
-      class="map-frame map-lazy"
-      data-map-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6500.8!2d139.6430!3d35.4480!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185427e50f1041%3A0x9c48e36e0e2d1337!2z5qiq5rWc44K544K_44K444Kr44CI44Ki44Og!5e0!3m2!1sja!2sjp!4v1"
-      data-map-title="横浜エリアマップ"
-    >
-      <div class="map-fallback">
-        <div class="map-fallback-title">地図を読み込みます</div>
-        <button type="button" class="map-show-btn" data-map-show>地図を表示</button>
-      </div>
-    </div>
-    <!-- 凡例（地図直下） -->
-    <div class="legend-bar">
-      <a class="leg" href="#access">
-        <div class="ldot" style="background:var(--c-stadium);"></div>横浜スタジアム
-      </a>
-      <a class="leg" href="https://maps.google.com/?q=横浜赤レンガ倉庫" target="_blank" rel="noopener">
-        <div class="ldot" style="background:var(--c-redbrick);"></div>赤レンガ倉庫
-      </a>
-      <a class="leg" href="https://maps.google.com/?q=臨港パーク+横浜" target="_blank" rel="noopener">
-        <div class="ldot" style="background:var(--c-central);"></div>臨港パーク
-      </a>
-      <a class="leg" href="https://maps.google.com/?q=横浜マリンタワー" target="_blank" rel="noopener">
-        <div class="ldot" style="background:var(--c-tower);"></div>マリンタワー
-      </a>
-      <a class="leg" href="https://maps.google.com/?q=UNI+COFFEE+ROASTERY+横浜" target="_blank" rel="noopener">
-        <div class="ldot" style="background:var(--c-unicoffee);"></div>UNI COFFEE
-      </a>
-      <a class="leg" href="https://maps.google.com/?q=横浜中華街" target="_blank" rel="noopener">
-        <div class="ldot" style="background:var(--c-chinatown);"></div>中華街
-      </a>
-      <a class="leg" href="https://maps.google.com/?q=日本大通り駅" target="_blank" rel="noopener">
-        <div class="ldot" style="background:var(--c-minatomi);"></div>日本大通り駅
-      </a>
+    <div class="map-frame map-frame--crop" aria-label="横浜エリアマップ">
+      <iframe
+        id="yokohama-map"
+        title="横浜エリアマップ（ピン付き）"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/d/embed?mid=19dE9UWyX50jd9NySJXjD5lwad0S62lk&amp;z=14&amp;ll=35.4453%2C139.6381"
+      ></iframe>
     </div>
 
     <!-- スポットカード -->
     <div class="spot-cards">
 
       <!-- ① 横浜スタジアム（会場＋行き方） -->
-      <div class="spot-card" id="access" data-tags="会場,グッズ,飲食">
+      <div class="spot-card" id="access" data-spot-id="stadium" data-lat="35.4394" data-lng="139.6374" data-tags="会場,グッズ,飲食">
         <div class="spot-bar" style="background:var(--c-stadium);"></div>
         <div class="spot-inner">
           <div class="spot-hd">
@@ -145,7 +120,7 @@
       </div>
 
       <!-- ② 横浜赤レンガ倉庫 -->
-      <div class="spot-card" data-tags="グッズ,飲食">
+      <div class="spot-card" data-spot-id="redbrick" data-lat="35.4526321" data-lng="139.6428944" data-tags="グッズ,飲食">
         <div class="spot-bar" style="background:var(--c-redbrick);"></div>
         <div class="spot-inner">
           <div class="spot-hd">
@@ -177,7 +152,7 @@
       </div>
 
       <!-- ③ 臨港パーク（CENTRAL） -->
-      <div class="spot-card" data-tags="展示,無料">
+      <div class="spot-card" data-spot-id="central" data-lat="35.461028" data-lng="139.637389" data-tags="展示,無料">
         <div class="spot-bar" style="background:var(--c-central);"></div>
         <div class="spot-inner">
           <div class="spot-hd">
@@ -205,7 +180,7 @@
       </div>
 
       <!-- ④ 横浜マリンタワー -->
-      <div class="spot-card" data-tags="展示">
+      <div class="spot-card" data-spot-id="marinetower" data-lat="35.443939" data-lng="139.650940" data-tags="展示">
         <div class="spot-bar" style="background:var(--c-tower);"></div>
         <div class="spot-inner">
           <div class="spot-hd">
@@ -231,7 +206,7 @@
       </div>
 
       <!-- ⑤ UNI COFFEE（関内・日本大通り） -->
-      <div class="spot-card" data-tags="飲食">
+      <div class="spot-card" data-spot-id="unicoffee" data-lat="35.4468455" data-lng="139.6408256" data-tags="飲食">
         <div class="spot-bar" style="background:var(--c-unicoffee);"></div>
         <div class="spot-inner">
           <div class="spot-hd">
@@ -261,7 +236,7 @@
       </div>
 
       <!-- ⑥ 横浜中華街 -->
-      <div class="spot-card" data-tags="飲食">
+      <div class="spot-card" data-spot-id="chinatown" data-lat="35.442815" data-lng="139.645929" data-tags="飲食">
         <div class="spot-bar" style="background:var(--c-chinatown);"></div>
         <div class="spot-inner">
           <div class="spot-hd">
@@ -287,7 +262,7 @@
       </div>
 
       <!-- ⑦ 日本大通り駅・交通コラボ -->
-      <div class="spot-card" data-tags="交通">
+      <div class="spot-card" data-spot-id="nihonodori" data-lat="35.446794" data-lng="139.642647" data-tags="交通">
         <div class="spot-bar" style="background:var(--c-minatomi);"></div>
         <div class="spot-inner">
           <div class="spot-hd">

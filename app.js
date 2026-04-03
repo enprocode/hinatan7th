@@ -1,4 +1,4 @@
-// GitHub Pages (static) 向け：検索/フィルタ、現在位置ナビ、地図の遅延読み込み
+// GitHub Pages (static) 向け：検索/フィルタ、現在位置ナビ
 
 function setupNavCurrentSection() {
   const navLinks = Array.from(document.querySelectorAll('nav a.nav-link[href^="#"]'));
